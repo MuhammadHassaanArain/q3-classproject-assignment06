@@ -199,3 +199,37 @@ class Dog:
 dog1 = Dog("Herry","Italian")
 dog1.bark()
 print("_______________________________________")
+
+# 11. Class Methods
+# Assignment:
+# Create a class Book with a class variable total_books. 
+# Add a class method increment_book_count() to increase 
+# the count when a new book is added.
+class Book:
+    total_books = 0
+    def __init__(self):
+        Book.increament_book_count()
+    @classmethod
+    def increament_book_count(cls):
+        cls.total_books += 1
+
+print(Book.total_books)
+book1 = Book()
+book2 = Book()
+book3 = Book()
+print(Book.total_books)
+print("_______________________________________")
+
+
+# 12. Static Methods
+# Assignment:
+# Create a class TemperatureConverter with a static method 
+# celsius_to_fahrenheit(c) that returns the Fahrenheit value.
+class TemperatureConverter:
+    @staticmethod
+    def celsius_to_fahrenheit(cel):
+        f = (cel * 9/5) + 32
+        print(f"{cel}°C in Fahrenheit is {f}°F")
+TemperatureConverter.celsius_to_fahrenheit(100)
+TemperatureConverter.celsius_to_fahrenheit(44)
+print("_______________________________________")
