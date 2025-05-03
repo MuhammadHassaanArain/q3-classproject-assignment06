@@ -1,3 +1,5 @@
+print("_______________________________________")
+
 # 1. Using self
 # Assignment:
 # Create a class Student with attributes name and marks. 
@@ -10,14 +12,13 @@ class Student:
     def display(self):
         print(f"Student Name: {self.name}")
         print(f"Marks: {self.marks}")
-
-
-
+        
 s1 = Student("Hassaan",87)
 s2 = Student("Aasia", 88)
-# s1.display()
-# s2.display()
-# 
+s1.display()
+s2.display()
+print("_______________________________________")
+
 
 # 2. Using cls
 # Assignment:
@@ -36,16 +37,16 @@ class Counter:
 obj1 =  Counter()
 obj2 =  Counter()
 obj3 =  Counter()
-# Counter.display_count()
+Counter.display_count()
+print("_______________________________________")
 
 
-# 
+
 # 3. Public Variables and Methods
 # Assignment:
 # Create a class Car with a public variable brand and a public
 #  method start(). Instantiate the class and access both from
 #  outside the class.
-
 class Car:
     def __init__(self,brand):
         self.brand = brand
@@ -53,45 +54,45 @@ class Car:
         print(f"{self.brand} car is starting...")
 
 my_car = Car("Toyota")
-# print("Brand: " + my_car.brand)
-# my_car.start()
+print("Brand: " , my_car.brand)
+my_car.start()
+print("_______________________________________")
 
-# 
 
 # 4. Class Variables and Class Methods
 # Assignment:
 # Create a class Bank with a class variable bank_name. Add a 
 # class method change_bank_name(cls, name) that allows changing
 #  the bank name. Show that it affects all instances.
-
 class Bank:
     bank_name = "MCB"
     @classmethod
     def change_bank_name(cls,name):
         cls.bank_name = name
 bank = Bank()
-# print("Old Bank Name: " + bank.bank_name)
+print("Old Bank Name: " + bank.bank_name)
 bank.change_bank_name("HBL")
-# print("New Bank Name: " + bank.bank_name)
+print("New Bank Name: " + bank.bank_name)
+print("_______________________________________")
 
-# 
+
 # 5. Static Variables and Static Methods
 # Assignment:
 # Create a class MathUtils with a static method add(a, b)
 #  that returns the sum. No class or instance variables 
 # should be used.
-
 class MathUtils:
     @staticmethod
     def add(a , b):
         return a + b
     
 result = MathUtils.add(2,4)
-# print(result)
-# 
+print(result)
+print("_______________________________________")
 
 
-# . Constructors and Destructors
+
+# 6. Constructors and Destructors
 # Assignment:
 # Create a class Logger that prints a message when an object
 #  is created (constructor) and another message when it is 
@@ -102,9 +103,11 @@ class Logger:
 
     def __del__(self):
         print("Logger object is destroyed.")
-# obj = Logger()
+obj = Logger()
+del obj 
+print("_______________________________________")
 
-# 
+
 # 7. Access Modifiers: Public, Private, and Protected
 # Assignment:
 # Create a class Employee with:
@@ -113,7 +116,6 @@ class Logger:
 # a private variable __ssn.
 # Try accessing all three variables from an object of the
 #  class and document what happens.
-
 class Employee:
     def __init__(self,name, salary, ssn):
         self.name = name # Public Variable
@@ -126,17 +128,15 @@ class Employee:
         
 
 employee1 = Employee("Hassaan",10000,23456)
-# print("------------------------------------------------")
-# employee1.display() # this will corretly display the employee information.
-# print("------------------------------------------------")
-# print(f"Employee Name: {employee1.name}") # direct access to public variable.
-# print(f"Employee Salary: {employee1._salary}") # direct access to protected variable.
-# try: # trying to access the private variable directle (will raise an error)
-#     print(f"Employee SSN: {employee1.__ssn}")
-# except AttributeError as e:
-#     print(f"Error: {e}")
-
-# 
+employee1.display() # this will corretly display the employee information.
+print("--------------------")
+print(f"Employee Name: {employee1.name}") # direct access to public variable.
+print(f"Employee Salary: {employee1._salary}") # direct access to protected variable.
+try: # trying to access the private variable directle (will raise an error)
+    print(f"Employee SSN: {employee1.__ssn}")
+except AttributeError as e:
+    print(f"Error: {e}")
+print("_______________________________________")
 
 # 8. The super() Function
 # Assignment:
@@ -146,7 +146,6 @@ employee1 = Employee("Hassaan",10000,23456)
 class Person:
     def __init__(self,name):
         self.name = name
-
 class Teacher(Person):
     def __init__(self, name, subject):
         super().__init__(name)
@@ -158,3 +157,45 @@ class Teacher(Person):
 
 t1 = Teacher("Asghar","Mathematics")
 t1.display_info()
+print("_______________________________________")
+
+
+
+# 9. Abstract Classes and Methods
+# Assignment:
+# Use the abc module to create an abstract class Shape with
+#  an abstract method area(). Inherit a class Rectangle
+#  that implements area().
+from abc import ABC, abstractmethod
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+class Rectangle(Shape):
+    def __init__(self, length,width):
+        self.length = length
+        self.width = width
+    def area(self):
+        return self.length * self.width
+    
+rec1 = Rectangle(2,2)
+print("Area of Rectangle: " , rec1.area())
+print("_______________________________________")
+
+
+
+# 10. Instance Methods
+# Assignment:
+# Create a class Dog with instance variables name and breed. 
+# Add an instance method bark() that prints a message 
+# including the dog's name.
+class Dog:
+    def __init__(self,name,breed):
+        self.name = name
+        self.breed = breed
+    def bark(self):
+        print(f" {self.name}, the {self.breed}, says: woof!")
+
+dog1 = Dog("Herry","Italian")
+dog1.bark()
+print("_______________________________________")
