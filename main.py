@@ -233,3 +233,27 @@ class TemperatureConverter:
 TemperatureConverter.celsius_to_fahrenheit(100)
 TemperatureConverter.celsius_to_fahrenheit(44)
 print("_______________________________________")
+
+
+# 13. Composition
+# Assignment:
+# Create a class Engine and a class Car. Use composition by passing
+#  an Engine object to the Car class during initialization. Access
+#  a method of the Engine class via the Car class.
+class Engine:
+    def __init__(self, horsepower):
+        self.horsepower = horsepower
+    def start(self):
+        print(f"Engine with {self.horsepower} HP Started.")
+class Car:
+    def __init__(self, engine:Engine):
+        self.engine = engine
+    def start(self):
+        print(f"Car is Starting...")
+        self.engine.start() # accessing the engine method in car class
+
+engine1 = Engine(528)
+# e1.start()
+car = Car(engine1)
+car.start()
+print("_______________________________________")
