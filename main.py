@@ -253,7 +253,34 @@ class Car:
         self.engine.start() # accessing the engine method in car class
 
 engine1 = Engine(528)
-# e1.start()
-car = Car(engine1)
-car.start()
+engine2 = Engine(1290)
+car1 = Car(engine1)
+car2 = Car(engine2)
+car1.start()
+car2.start()
+print("_______________________________________")
+
+# 14. Aggregation
+# Assignment:
+# Create a class Department and a class Employee. Use 
+# aggregation by having a Department object store a reference
+#  to an Employee object that exists independently of it.
+class Employee:
+    def __init__(self, name , emp_id):
+        self.name = name 
+        self.emp_id = emp_id
+    def display(self):
+        print(f"Employee Name: {self.name}, ID: {self.emp_id}")
+class Department:
+    def __init__(self, dept_name, employee):
+        self.dept_name = dept_name
+        self.employee = employee
+    def show_details(self):
+        print(f"Department Name: {self.dept_name}")
+        self.employee.display()
+
+emp1 = Employee("Hassaan", 123)
+dept1 = Department("IT",emp1)
+dept1.show_details()
+
 print("_______________________________________")
