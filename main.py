@@ -307,3 +307,49 @@ class D(B,C):
 objd = D()
 objd.show()
 print("_______________________________________")
+
+# 16. Function Decorators
+# Assignment:
+# Write a decorator function log_function_call that prints 
+# "Function is being called" before a function executes. 
+# Apply it to a function say_hello().
+
+def log_function_call(func):
+    def wrapper():
+        print("function is being called!")
+        return func()
+    return wrapper
+
+@log_function_call
+def say_hello():
+    pass
+say_hello()
+
+print("_______________________________________")
+
+# 17. Class Decorators
+# Assignment:
+# Create a class decorator add_greeting that modifies a class 
+# to add a greet() method returning "Hello from Decorator!".
+#  Apply it to a class Person.
+def add_greeting(cls):
+    # adding a greet method to the class
+    # first approach
+    def greet(self):
+        print("Hello from decorator! (greet)")
+    cls.greet = greet
+    # Second approach
+    cls.greeting = lambda self: print("Hello from decorator! (greeting)")
+    return cls
+# applying decorator to class
+@add_greeting
+class Person:
+    def original_method(self):
+        print("From inside the original class!")
+
+obj = Person()
+obj.original_method() # output: From inside the original class!
+obj.greet() # output: Hello from decorator! (greet)
+obj.greeting() # Hello from decorator! (greeting)
+
+print("_______________________________________")
