@@ -383,3 +383,62 @@ print("New Price: ", obj.price)
 del obj.price
 
 print("_______________________________________")
+
+# 19. callable() and __call__()
+# Assignment:
+# Create a class Multiplier with an __init__() to set a factor.
+#  Define a __call__() method that multiplies an input by the 
+# factor. Test it with callable() and by calling the object 
+# like a function.
+class Multiplier:
+    def __init__(self, factor):
+        self.factor = factor
+    def __call__(self,number):
+        return number * self.factor
+obj = Multiplier(2)
+print(callable(obj))
+print(obj(3))
+
+print("_______________________________________")
+
+# 20. Creating a Custom Exception
+# Assignment:
+# Create a custom exception InvalidAgeError. Write a function 
+# check_age(age) that raises this exception if age < 18. Handle
+#  it with try...except.
+class InvalidAgeError(Exception):
+    pass
+def check_age(age):
+    try:
+        if age < 18:
+            raise InvalidAgeError("Age is Less than 18")
+        else:
+            print("Age is Greater than 17.")
+    except InvalidAgeError as e:
+        print(e)
+check_age(17)
+
+print("_______________________________________")
+
+# 21. Make a Custom Class Iterable
+# Assignment:
+# Create a class Countdown that takes a start number. 
+# Implement __iter__() and __next__() to make the object
+#  iterable in a for-loop, counting down to 0.
+class Countdown:
+    def __init__(self,start_number):
+        self.number = start_number
+    def __iter__(self):
+        return self
+    def __next__(self):
+        if self.number >= 0:
+            value = self.number
+            self.number -= 1
+            return value
+        else:
+            raise StopIteration
+        
+obj = Countdown(4)
+for num in obj:
+    print(num)
+print("_______________________________________")
