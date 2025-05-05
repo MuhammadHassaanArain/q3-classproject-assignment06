@@ -351,5 +351,35 @@ obj = Person()
 obj.original_method() # output: From inside the original class!
 obj.greet() # output: Hello from decorator! (greet)
 obj.greeting() # Hello from decorator! (greeting)
+print("_______________________________________")
+
+# 18. Property Decorators: @property, @setter, and @deleter
+# Assignment:
+# Create a class Product with a private attribute _price. 
+# Use @property to get the price, @price.setter to update it,
+#  and @price.deleter to delete it.
+
+class Product:
+    def __init__(self, price):
+        self.__price = price
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self,new_price):
+        self.__price = new_price
+
+    @price.deleter
+    def price(self):
+        print("Deleting Price...")
+        del self.__price
+        print("Price Deleted!")
+
+obj = Product(399)
+print("Old Price: ",obj.price)
+obj.price = 299
+print("New Price: ", obj.price)
+del obj.price
 
 print("_______________________________________")
